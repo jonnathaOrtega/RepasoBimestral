@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JoyerialocalEditDlg" widgetVar="JoyerialocalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditJoyerialocalTitle}">
+            <h:form id="JoyerialocalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{joyerialocalController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{joyerialocalController.selected.nombre}" title="#{bundle.EditJoyerialocalTitle_nombre}" required="true" requiredMessage="#{bundle.EditJoyerialocalRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_ubicacion}" for="ubicacion" />
+                        <p:inputText id="ubicacion" value="#{joyerialocalController.selected.ubicacion}" title="#{bundle.EditJoyerialocalTitle_ubicacion}" />
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{joyerialocalController.selected.direccion}" title="#{bundle.EditJoyerialocalTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_nomEncargado}" for="nomEncargado" />
+                        <p:inputText id="nomEncargado" value="#{joyerialocalController.selected.nomEncargado}" title="#{bundle.EditJoyerialocalTitle_nomEncargado}" />
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_dimension}" for="dimension" />
+                        <p:inputText id="dimension" value="#{joyerialocalController.selected.dimension}" title="#{bundle.EditJoyerialocalTitle_dimension}" />
+                        <p:outputLabel value="#{bundle.EditJoyerialocalLabel_ciudad}" for="ciudad" />
+                        <p:inputText id="ciudad" value="#{joyerialocalController.selected.ciudad}" title="#{bundle.EditJoyerialocalTitle_ciudad}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{joyerialocalController.update}" value="#{bundle.Save}" update="display,:JoyerialocalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'JoyerialocalEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="JoyerialocalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
